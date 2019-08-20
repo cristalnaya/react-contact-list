@@ -123,22 +123,30 @@ class App extends Component {
     const filteredContacts = contacts.filter(contact => {
         return contact.name.toLowerCase().indexOf(searchedText.toLowerCase()) !== -1
       });
-      
+
     return (
-      <div className="App">
-        <header className="App-header">
-          <h1>Contacts</h1>
-        </header>
-        <Contacts 
-          addContact={this.addContact}
-          onEdit={this.onEdit}
-          handleChangeInput={this.handleChangeInput}
-          name={this.state.name}
-          email={this.state.email}
-          nameError={this.state.nameError}
-          emailError={this.state.emailError}
-        />
-      </div>
+      <Grid
+            className="App"
+            mx='auto'
+            container
+            justify="center"
+            >
+              <Grid item xs={12} sm={12} md={6}>
+                <Contacts 
+                  contacts={filteredContacts} 
+                  searchValue={searchValue} 
+                  searchedText={searchedText}
+                  addContact={addContact}
+                  handleChange={handleChange}
+                  formInputName={name}
+                  email={email}
+                  editContact={editContact}
+                  deleteContact={deleteContact}
+                  nameError={nameError}
+                  emailError={emailError}
+                />
+              </Grid>
+           </Grid>
     );
   }
 }
